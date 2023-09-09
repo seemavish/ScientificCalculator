@@ -112,7 +112,7 @@ void Calculator::operate()
         }
         else
         {
-            cout << "Invalid datatype! Expected a number" << endl;
+            cout << "Invalid datatype! Expected a number." << endl;
         }
         break;
     case 2:
@@ -136,7 +136,7 @@ void Calculator::operate()
         }
         else
         {
-            cout << "Invalid datatype! Expected a number" << endl;
+            cout << "Invalid datatype! Expected a number." << endl;
         }
         break;
     case 4:
@@ -167,7 +167,7 @@ void Calculator::operate()
         }
         else
         {
-            cout << "Invalid datatype! Expected a number" << endl;
+            cout << "Invalid datatype! Expected a number." << endl;
         }
         break;
     case 6:
@@ -181,7 +181,7 @@ void Calculator::operate()
         }
         else
         {
-            cout << "Invalid datatype! Expected a number" << endl;
+            cout << "Invalid datatype! Expected a number." << endl;
         }
     case 7:
         if (num1 <= 0)
@@ -208,7 +208,7 @@ void Calculator::operate()
         }
         else
         {
-            cout << "Invalid datatype! Expected a number" << endl;
+            cout << "Invalid datatype! Expected a number." << endl;
         }
         break;
     case 9:
@@ -221,7 +221,7 @@ void Calculator::operate()
         }
         else
         {
-            cout << "Invalid datatype! Expected a number" << endl;
+            cout << "Invalid datatype! Expected a number." << endl;
         }
         break;
     case 10:
@@ -233,8 +233,15 @@ void Calculator::operate()
         cout << "Here is your answer = " << result << endl;
         break;
     case 12:
-        result = squareroot(num1);
-        cout << "Here is your answer = " << result << endl;
+        if (num1 < 0)
+        {
+            cout << "Square root of a negative number is not possible."
+        }
+        else
+        {
+            result = squareroot(num1);
+            cout << "Here is your answer = " << result << endl;
+        }
         break;
     case 13:
         cout << "Enter second number: ";

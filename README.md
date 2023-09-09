@@ -9,9 +9,8 @@ Develope a C++ program to emulate a scientific calculator with the following fea
 5. Trignometric functionalities: sin, cos, tan, inverse values ..
 
 
-add a checker for radians 
-sqrt input is not negative
-
-more functions to include:
-ceil
-radians to degree and other way round
+Conditions to check:
+1. Square root accepts non-negative numbers.
+2. Denominator is non-zero for division.
+3. For logarithmic operations, the input value is positive. 
+4. Data type of input numbers is double. 
