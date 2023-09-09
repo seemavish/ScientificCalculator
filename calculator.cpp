@@ -128,7 +128,7 @@ void Calculator::operate()
         {
             if (num2 == 0)
             {
-                cout << "Division by 0 is not possible!";
+                cout << "Division by 0 is not possible!" << endl;
             }
             else
             {
