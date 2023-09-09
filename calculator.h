@@ -16,6 +16,7 @@ public:
 
 public:
     Calculator();
+    ~Calculator();
     double absolute(double num1);
     double add(double num1, double num2);
     double cosine(double num1);

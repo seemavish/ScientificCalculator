@@ -23,6 +23,8 @@ Calculator::Calculator()
     operations.push_back("tan");
 };
 
+Calculator::~Calculator(){};
+
 double Calculator::absolute(double num1)
 {
     return abs(num1);
@@ -235,7 +237,7 @@ void Calculator::operate()
     case 12:
         if (num1 < 0)
         {
-            cout << "Square root of a negative number is not possible."
+            cout << "Square root of a negative number is not possible.";
         }
         else
         {
