@@ -3,6 +3,16 @@
 #include <cmath>
 #include <iostream>
 
+double Calculator::absolute(double num1)
+{
+    return abs(num1);
+};
+
+double Calculator::add(double num1, double num2)
+{
+    return (num1 + num2);
+};
+
 // list of operations this calculator can perform
 Calculator::Calculator()
 {
@@ -24,16 +34,6 @@ Calculator::Calculator()
 };
 
 Calculator::~Calculator(){};
-
-double Calculator::absolute(double num1)
-{
-    return abs(num1);
-};
-
-double Calculator::add(double num1, double num2)
-{
-    return (num1 + num2);
-};
 
 double Calculator::cosine(double num1)
 {
