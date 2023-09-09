@@ -91,8 +91,11 @@ double Calculator::naturalLog(double num1)
 // perform the operation
 void Calculator::operate()
 {
+    // store the index value in variable index
     index = getIndex(operation, operations);
 
+    // check if the index of the opertation entered matches with the index in operations array for the respective calculator operation
+    // implement the code if condition satified
     switch (index)
     {
     case 0:
