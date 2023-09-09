@@ -1,83 +1,141 @@
 #include "calculator.h"
 
 #include <cmath>
+#include <iostream>
 
-vector<string> operations = {"abs", "+", "cos", "div", "log", "mod", "*", "ln", "%", "^", "sin", "^2", "sqrt", "-", "tan"};
+Calculator::Calculator()
+{
+    // operations = {"abs", "+", "cos", "div", "log", "mod", "*", "ln", "%", "^", "sin", "^2", "sqrt", "-", "tan"};
+    operations.push_back("abs");
+    operations.push_back("+");
+    operations.push_back("cos");
+    operations.push_back("/");
+    operations.push_back("log10");
+    operations.push_back("mod");
+    operations.push_back("*");
+    operations.push_back("ln");
+    operations.push_back("percent");
+    operations.push_back("^");
+    operations.push_back("sin");
+    operations.push_back("^2");
+    operations.push_back("sqrt");
+    operations.push_back("-");
+    operations.push_back("tan");
+};
 
-double absolute(double num1){
+double Calculator::absolute(double num1)
+{
     return abs(num1);
 };
 
-double add(double num1, double num2){
-    return (num1 + num2); 
+double Calculator::add(double num1, double num2)
+{
+    return (num1 + num2);
 };
 
-double cosine(double num1){
+double Calculator::cosine(double num1)
+{
     return cos(num1);
 };
 
-double divide(double num1, double num2){
+double Calculator::divide(double num1, double num2)
+{
     return (num1 / num2);
 };
 
-bool isValid(string operation){
-    for(int i = 0; i < operations.length(); i++){
-        try {
-            if (operation in operations) {
-                cout << "Let's proceed with further steps!" << endl;
-                return true;
-            }
-            else{
-                throw operation;
-            }
+// bool Calculator::isValidOperation(string operation, vector<string> operations)
+// {
+//     for (int i = 0; i <= operations.size(); ++i)
+//     {
+//         if (operation == operations[i])
+//         {
+//             return true;
+//         }
+//     }
+//     return false;
+// };
+
+int Calculator::getIndex(string operation, vector<string> operations)
+{
+    for (int i = 0; i < operations.size(); i++)
+    {
+        if (operation == operations[i])
+        {
+            return i;
         }
-        catch (...) {
-            cout << "Incorrect input! Case sensitive operations. Try again";
-            return false;
+        else{
+            return 0;
         }
     }
-};
+}
 
-double logbase10(double num1){
+double Calculator::logbase10(double num1)
+{
     return log10(num1);
 }
 
-double modulus(double num1, double num2){
+double Calculator::modulus(double num1, double num2)
+{
     return fmod(num1, num2);
 };
 
-double multiply(double num1, double num2){
+double Calculator::multiply(double num1, double num2)
+{
     return (num1 * num2);
 };
 
-double naturallog(double num1, double num2){
+double Calculator::naturalLog(double num1)
+{
     return log(num1);
 };
 
-double percentage(double num1, double num2){
+double Calculator::percentage(double num1, double num2)
+{
     return (num1 / num2) * 100;
 };
 
-double power(double num1, double num2){
-    return pow(num1,num2);
+double Calculator::power(double num1, double num2)
+{
+    return pow(num1, num2);
 };
 
-double sine(double num1){
+double Calculator::sine(double num1)
+{
     return sin(num1);
 };
 
-double square(double num1){
+double Calculator::square(double num1)
+{
     return pow(num1, 2);
 };
 
-double squareroot(double num1){
+double Calculator::squareroot(double num1)
+{
     return sqrt(num1);
 };
 
-double subtract(double num1, double num2){
+double Calculator::subtract(double num1, double num2)
+{
     return (num1 - num2);
 };
 
-double tangent(double num1){
+double Calculator::tangent(double num1)
+{
     return tan(num1);
+};
+
+void Calculator::viewOperations()
+{
+    cout << "------------------------------" << endl
+         << endl
+         << "MY SCIENTIFIC CALCULATOR" << endl
+         << endl;
+
+    // list of all the operations the calculator can perform
+    cout << "Operations available: " << endl
+         << endl;
+    for (int i = 0; i < operations.size(); i++)
+    {
+        cout << operations[i] << " | ";
+    }
 };
