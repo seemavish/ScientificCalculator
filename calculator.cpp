@@ -2,7 +2,6 @@
 
 #include <cmath>
 #include <iostream>
-using namespace std;
 
 // list of operations this calculator can perform
 Calculator::Calculator()
