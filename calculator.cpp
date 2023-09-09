@@ -2,10 +2,11 @@
 
 #include <cmath>
 #include <iostream>
+using namespace std;
 
+// list of operations this calculator can perform
 Calculator::Calculator()
 {
-    // operations = {"abs", "+", "cos", "div", "log", "mod", "*", "ln", "%", "^", "sin", "^2", "sqrt", "-", "tan"};
     operations.push_back("abs");
     operations.push_back("+");
     operations.push_back("cos");
@@ -43,18 +44,19 @@ double Calculator::divide(double num1, double num2)
     return (num1 / num2);
 };
 
-// bool Calculator::isValidOperation(string operation, vector<string> operations)
-// {
-//     for (int i = 0; i <= operations.size(); ++i)
-//     {
-//         if (operation == operations[i])
-//         {
-//             return true;
-//         }
-//     }
-//     return false;
-// };
+bool Calculator::isValidOperation(string operation, vector<string> operations)
+{
+    for (int i = 0; i <= operations.size(); ++i)
+    {
+        if (operation == operations[i])
+        {
+            return true;
+        }
+    }
+    return false;
+};
 
+// get the index of the input operation (needed for switch)
 int Calculator::getIndex(string operation, vector<string> operations)
 {
     for (int i = 0; i < operations.size(); i++)
@@ -63,16 +65,14 @@ int Calculator::getIndex(string operation, vector<string> operations)
         {
             return i;
         }
-        else{
-            return 0;
-        }
     }
+    return -1;
 }
 
 double Calculator::logbase10(double num1)
 {
     return log10(num1);
-}
+};
 
 double Calculator::modulus(double num1, double num2)
 {
@@ -88,6 +88,164 @@ double Calculator::naturalLog(double num1)
 {
     return log(num1);
 };
+
+// perform the operation
+void Calculator::operate()
+{
+    index = getIndex(operation, operations);
+
+    switch (index)
+    {
+    case 0:
+        result = absolute(num1);
+        cout << "Here is your answer = " << result << endl;
+        break;
+    case 1:
+        cout << "Enter second number: ";
+        cin >> num2;
+        if (typeid(num2) == typeid(double))
+        {
+            result = add(num1, num2);
+            cout << "Here is your answer = " << result << endl;
+        }
+        else
+        {
+            cout << "Invalid datatype! Expected a number" << endl;
+        }
+        break;
+    case 2:
+        result = cosine(num1);
+        cout << "Here is your answer = " << result << endl;
+        break;
+    case 3:
+        cout << "Enter second number: ";
+        cin >> num2;
+        if (typeid(num2) == typeid(double))
+        {
+            if (num2 == 0)
+            {
+                cout << "Division by 0 is not possible!";
+            }
+            else
+            {
+                result = divide(num1, num2);
+                cout << "Here is your answer = " << result << endl;
+            }
+        }
+        else
+        {
+            cout << "Invalid datatype! Expected a number" << endl;
+        }
+        break;
+    case 4:
+        if (num1 <= 0)
+        {
+            cout << "Logarithm of negative or zero numbers does not exist.";
+        }
+        else
+        {
+            result = logbase10(num1);
+            cout << "Here is your answer = " << result << endl;
+        }
+        break;
+    case 5:
+        cout << "Enter second number: ";
+        cin >> num2;
+        if (typeid(num2) == (typeid(double)))
+        {
+            if (num1 == 0)
+            {
+                cout << "Division by 0 is not possible.";
+            }
+            else
+            {
+                result = modulus(num1, num2);
+                cout << "Here is your answer = " << result << endl;
+            }
+        }
+        else
+        {
+            cout << "Invalid datatype! Expected a number" << endl;
+        }
+        break;
+    case 6:
+        cout << "Enter second number: ";
+        cin >> num2;
+        if ((typeid(num2) == typeid(double)))
+        {
+            result = multiply(num1, num2);
+            cout << "Here is your answer = " << result << endl;
+            break;
+        }
+        else
+        {
+            cout << "Invalid datatype! Expected a number" << endl;
+        }
+    case 7:
+        if (num1 <= 0)
+        {
+            cout << "Logarithm of negative or zero numbers does not exist.";
+        }
+        else
+        {
+            result = naturalLog(num1);
+            cout << "Here is your answer = " << result << endl;
+        }
+        break;
+    case 8:
+        cout << "Enter second number: ";
+        cin >> num2;
+        if (typeid(num2) == typeid(double))
+        {
+            if (num2 == 0)
+            {
+                cout << "Division by 0 is not possible!";
+            }
+            result = percentage(num1, num2);
+            cout << "Here is your answer = " << result << endl;
+        }
+        else
+        {
+            cout << "Invalid datatype! Expected a number" << endl;
+        }
+        break;
+    case 9:
+        cout << "Enter second number: ";
+        cin >> num2;
+        if (typeid(num2) == typeid(double))
+        {
+            result = power(num1, num2);
+            cout << "Here is your answer = " << result << endl;
+        }
+        else
+        {
+            cout << "Invalid datatype! Expected a number" << endl;
+        }
+        break;
+    case 10:
+        result = sine(num1);
+        cout << "Here is your answer = " << result << endl;
+        break;
+    case 11:
+        result = square(num1);
+        cout << "Here is your answer = " << result << endl;
+        break;
+    case 12:
+        result = squareroot(num1);
+        cout << "Here is your answer = " << result << endl;
+        break;
+    case 13:
+        cout << "Enter second number: ";
+        cin >> num2;
+        result = subtract(num1, num2);
+        cout << "Here is your answer = " << result << endl;
+        break;
+    case 14:
+        result = tangent(num1);
+        cout << "Here is your answer = " << result << endl;
+        break;
+    }
+}
 
 double Calculator::percentage(double num1, double num2)
 {
