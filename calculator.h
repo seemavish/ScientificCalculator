@@ -11,7 +11,7 @@ class Calculator
 public:
     double num1, num2, result;
     int index;
-    string operation;
+    string operation, input;
     vector<string> operations;
 
 public:
