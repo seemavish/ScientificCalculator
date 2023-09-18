@@ -14,21 +14,26 @@ int main()
           << endl
           << "Enter the operation you wish to perform: " << endl;
      cin >> calculator.operation;
-
-     if (calculator.isValidOperation(calculator.operation, calculator.operations))
+     try
      {
-          cout << "\nLet's proceed with further steps!" << endl
-               << endl;
+          if (calculator.isValidOperation(calculator.operation, calculator.operations))
+          {
+               cout << "\nLet's proceed with further steps!" << endl
+                    << endl;
 
-          cout << "Enter your number (note: trignometric functions take angles in radians): ";
-          cin >> calculator.num1;
+               cout << "Enter your number (note: trignometric functions take angles in radians): ";
+               cin >> calculator.num1;
 
-          calculator.operate();
+               calculator.operate();
+          }
+          else
+          {
+               throw(calculator.operation);
+          }
      }
-     else
-     {
+
+     catch (...) {
           cout << "Incorrect input! Case sensitive operations. Try again" << endl;
-     }
-
+     };
      return 0;
 }
