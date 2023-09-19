@@ -182,14 +182,18 @@ void Calculator::operate()
                 cout << "Enter second number: ";
                 cin >> num2;
 
-                if (typeid(num2) == typeid(double))
+                if (cin.fail())
                 {
-                    result = add(num1, num2);
-                    cout << "Here is your answer = " << result << endl;
+
+                    // clear input buffer
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Invalid datatype! Expected a number.");
                 }
                 else
                 {
-                    throw invalid_argument("Invalid datatype! Expected a number.");
+                    result = add(num1, num2);
+                    cout << "Here is your answer = " << result << endl;
                 }
                 break;
             case 2:
@@ -200,15 +204,20 @@ void Calculator::operate()
                 cout << "Enter second number: ";
                 cin >> num2;
 
-                if (typeid(num2) == typeid(double))
+                if (cin.fail())
+                {
+
+                    // clear input buffer
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Invalid datatype! Expected a number.");
+                }
+                else
                 {
                     result = divide(num1, num2);
                     cout << "Here is your answer = " << result << endl;
                 }
-                else
-                {
-                    throw invalid_argument("Invalid datatype! Expected a number.");
-                }
+
                 break;
             case 4:
                 result = logbase10(num1);
@@ -218,30 +227,39 @@ void Calculator::operate()
                 cout << "Enter second number: ";
                 cin >> num2;
 
-                if (typeid(num2) == (typeid(double)))
+                if (cin.fail())
+                {
+
+                    // clear input buffer
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Invalid datatype! Expected a number.");
+                }
+                else
                 {
                     result = modulus(num1, num2);
                     cout << "Here is your answer = " << result << endl;
                 }
-                else
-                {
-                    throw invalid_argument("Invalid datatype! Expected a number.");
-                }
+
                 break;
             case 6:
                 cout << "Enter second number: ";
                 cin >> num2;
 
-                if ((typeid(num2) == typeid(double)))
+                if (cin.fail())
                 {
-                    result = multiply(num1, num2);
-                    cout << "Here is your answer = " << result << endl;
-                    break;
+
+                    // clear input buffer
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Invalid datatype! Expected a number.");
                 }
                 else
                 {
-                    throw invalid_argument("Invalid datatype! Expected a number.");
+                    result = multiply(num1, num2);
+                    cout << "Here is your answer = " << result << endl;
                 }
+                break;
             case 7:
                 result = naturalLog(num1);
                 cout << "Here is your answer = " << result << endl;
@@ -250,29 +268,39 @@ void Calculator::operate()
                 cout << "Enter second number: ";
                 cin >> num2;
 
-                if (typeid(num2) == typeid(double))
+                if (cin.fail())
+                {
+
+                    // clear input buffer
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Invalid datatype! Expected a number.");
+                }
+                else
                 {
                     result = percentage(num1, num2);
                     cout << "Here is your answer = " << result << " %" << endl;
                 }
-                else
-                {
-                    throw invalid_argument("Invalid datatype! Expected a number.");
-                }
+
                 break;
             case 9:
                 cout << "Enter second number: ";
                 cin >> num2;
 
-                if (typeid(num2) == typeid(double))
+                if (cin.fail())
+                {
+
+                    // clear input buffer
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Invalid datatype! Expected a number.");
+                }
+                else
                 {
                     result = power(num1, num2);
                     cout << "Here is your answer = " << result << endl;
                 }
-                else
-                {
-                    throw invalid_argument("Invalid datatype! Expected a number.");
-                }
+
                 break;
             case 10:
                 result = sine(num1);
@@ -300,7 +328,7 @@ void Calculator::operate()
         }
         catch (const exception &e)
         {
-            cerr << "Exception error: " << e.what() << endl;
+            cerr << "Exception: " << e.what() << endl;
         }
     }
     else
