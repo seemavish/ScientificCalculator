@@ -37,6 +37,8 @@ Calculator::Calculator()
     operations.push_back("sqrt");
     operations.push_back("-");
     operations.push_back("tan");
+
+    assert(!operations.empty());
 };
 
 Calculator::~Calculator(){};
@@ -48,7 +50,6 @@ double Calculator::cosine(double num1)
 
 double Calculator::divide(double num1, double num2)
 {
-    assert(num2 != 0);
     if (num2 == 0)
     {
         throw runtime_error("Division by 0 is not possible!");
@@ -71,17 +72,18 @@ bool Calculator::isValidOperation(string operation, vector<string> operations)
 // get the index of the input operation (needed for switch)
 int Calculator::getIndex(string operation, vector<string> operations)
 {
-    auto i = find(operations.begin(), operations.end(), operation);
-    while (i != operations.end())
+    for (int i = 0; i < operations.size(); i++)
     {
-        return distance(operations.begin(), i);
+        if (operations[i] == operation)
+        {
+            return i;
+        }
     }
     return -1;
 }
 
 double Calculator::logbase10(double num1)
 {
-    assert(num1 > 0);
     if (num1 <= 0)
     {
         throw runtime_error("Logarithm of negative or zero numbers does not exist.");
@@ -91,7 +93,6 @@ double Calculator::logbase10(double num1)
 
 double Calculator::modulus(double num1, double num2)
 {
-    assert(num2 > 0);
     if (num2 == 0)
     {
         throw runtime_error("Division by 0 is not possible.");
@@ -106,7 +107,6 @@ double Calculator::multiply(double num1, double num2)
 
 double Calculator::naturalLog(double num1)
 {
-    assert(num1 > 0);
     if (num1 <= 0)
     {
         throw runtime_error("Logarithm of negative or zero numbers does not exist.");
@@ -116,7 +116,6 @@ double Calculator::naturalLog(double num1)
 
 double Calculator::percentage(double num1, double num2)
 {
-    assert(num2 != 0);
     if (num2 == 0)
     {
         throw runtime_error("Division by 0 is not possible!");
@@ -141,7 +140,6 @@ double Calculator::square(double num1)
 
 double Calculator::squareroot(double num1)
 {
-    assert(num1 >= 0);
     if (num1 < 0)
     {
         throw runtime_error("Square root of a negative number is not possible.");
@@ -162,7 +160,7 @@ double Calculator::tangent(double num1)
 // perform the operation
 void Calculator::operate()
 {
-    stringstream ss(input);
+    stringstream ss(input1);
     // check if the input is of type double
     if (ss >> num1)
     {
@@ -302,14 +300,14 @@ void Calculator::operate()
         }
         catch (const exception &e)
         {
-            cerr << "Exception: " << e.what() << endl;
+            cerr << "Exception error: " << e.what() << endl;
         }
     }
     else
     {
         cout << "Invalid datatype! Expected a number" << endl;
     }
-}
+};
 
 void Calculator::viewOperations()
 {

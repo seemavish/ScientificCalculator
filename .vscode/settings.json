@@ -3,6 +3,7 @@
         "exception": "cpp",
         "iterator": "cpp",
         "stdexcept": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "iosfwd": "cpp"
     }
 }

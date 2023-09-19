@@ -21,8 +21,8 @@ int main()
                cout << "\nLet's proceed with further steps!" << endl
                     << endl;
 
-               cout << "Enter your number (note: trignometric functions take angles in radians): ";
-               cin >> calculator.input;
+               cout << "Enter your number (note: only radians for angles): ";
+               cin >> calculator.input1;
 
                calculator.operate();
           }
