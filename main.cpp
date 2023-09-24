@@ -13,16 +13,16 @@ int main()
      cout << endl
           << endl
           << "Enter the operation you wish to perform: " << endl;
-     cin >> calculator.operation;
+     cin >> *calculator.operation;
      try 
      {
-          if (calculator.isValidOperation(calculator.operation, calculator.operations))
+          if (calculator.isValidOperation(*calculator.operation, calculator.operations))
           {
                cout << "\nLet's proceed with further steps!" << endl
                     << endl;
 
                cout << "Enter your number (note: only radians for angles): ";
-               cin >> calculator.input1;
+               cin >> *calculator.input1;
 
                calculator.operate();
           }

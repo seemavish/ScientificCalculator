@@ -22,6 +22,13 @@ double Calculator::add(double num1, double num2)
 // list of operations this calculator can perform
 Calculator::Calculator()
 {
+    num1 = new double;
+    num2 = new double;
+    result = new double;
+    index = new int;
+    operation = new string;
+    input1 = new string;
+
     operations.push_back("abs");
     operations.push_back("+");
     operations.push_back("cos");
@@ -41,7 +48,14 @@ Calculator::Calculator()
     assert(!operations.empty());
 };
 
-Calculator::~Calculator(){};
+Calculator::~Calculator(){
+    delete num1;
+    delete num2;
+    delete result;
+    delete index;
+    delete operation;
+    delete input1;
+};
 
 double Calculator::cosine(double num1)
 {
@@ -160,27 +174,27 @@ double Calculator::tangent(double num1)
 // perform the operation
 void Calculator::operate()
 {
-    stringstream ss(input1);
+    stringstream ss(*input1);
     // check if the input is of type double
-    if (ss >> num1)
+    if (ss >> *num1)
     {
         // store the index value in variable index
-        index = getIndex(operation, operations);
+        *index = getIndex(*operation, operations);
 
-        assert(index >= 0 && index < operations.size());
+        assert(*index >= 0 && *index < operations.size());
         try
         {
             // check if the index of the opertation entered matches with the index in operations array for the respective calculator operation
             // implement the code if condition satified
-            switch (index)
+            switch (*index)
             {
             case 0:
-                result = absolute(num1);
-                cout << "Here is your answer = " << result << endl;
+                *result = absolute(*num1);
+                cout << "Here is your answer = " << *result << endl;
                 break;
             case 1:
                 cout << "Enter second number: ";
-                cin >> num2;
+                cin >> *num2;
 
                 if (cin.fail())
                 {
@@ -192,17 +206,17 @@ void Calculator::operate()
                 }
                 else
                 {
-                    result = add(num1, num2);
-                    cout << "Here is your answer = " << result << endl;
+                    *result = add(*num1, *num2);
+                    cout << "Here is your answer = " << *result << endl;
                 }
                 break;
             case 2:
-                result = cosine(num1);
-                cout << "Here is your answer = " << result << endl;
+                *result = cosine(*num1);
+                cout << "Here is your answer = " << *result << endl;
                 break;
             case 3:
                 cout << "Enter second number: ";
-                cin >> num2;
+                cin >> *num2;
 
                 if (cin.fail())
                 {
@@ -214,18 +228,18 @@ void Calculator::operate()
                 }
                 else
                 {
-                    result = divide(num1, num2);
-                    cout << "Here is your answer = " << result << endl;
+                    *result = divide(*num1, *num2);
+                    cout << "Here is your answer = " << *result << endl;
                 }
 
                 break;
             case 4:
-                result = logbase10(num1);
-                cout << "Here is your answer = " << result << endl;
+                *result = logbase10(*num1);
+                cout << "Here is your answer = " << *result << endl;
                 break;
             case 5:
                 cout << "Enter second number: ";
-                cin >> num2;
+                cin >> *num2;
 
                 if (cin.fail())
                 {
@@ -237,14 +251,14 @@ void Calculator::operate()
                 }
                 else
                 {
-                    result = modulus(num1, num2);
-                    cout << "Here is your answer = " << result << endl;
+                    *result = modulus(*num1, *num2);
+                    cout << "Here is your answer = " << *result << endl;
                 }
 
                 break;
             case 6:
                 cout << "Enter second number: ";
-                cin >> num2;
+                cin >> *num2;
 
                 if (cin.fail())
                 {
@@ -256,17 +270,17 @@ void Calculator::operate()
                 }
                 else
                 {
-                    result = multiply(num1, num2);
-                    cout << "Here is your answer = " << result << endl;
+                    *result = multiply(*num1, *num2);
+                    cout << "Here is your answer = " << *result << endl;
                 }
                 break;
             case 7:
-                result = naturalLog(num1);
-                cout << "Here is your answer = " << result << endl;
+                *result = naturalLog(*num1);
+                cout << "Here is your answer = " << *result << endl;
                 break;
             case 8:
                 cout << "Enter second number: ";
-                cin >> num2;
+                cin >> *num2;
 
                 if (cin.fail())
                 {
@@ -278,14 +292,14 @@ void Calculator::operate()
                 }
                 else
                 {
-                    result = percentage(num1, num2);
-                    cout << "Here is your answer = " << result << " %" << endl;
+                    *result = percentage(*num1, *num2);
+                    cout << "Here is your answer = " << *result << " %" << endl;
                 }
 
                 break;
             case 9:
                 cout << "Enter second number: ";
-                cin >> num2;
+                cin >> *num2;
 
                 if (cin.fail())
                 {
@@ -297,32 +311,32 @@ void Calculator::operate()
                 }
                 else
                 {
-                    result = power(num1, num2);
-                    cout << "Here is your answer = " << result << endl;
+                    *result = power(*num1, *num2);
+                    cout << "Here is your answer = " << *result << endl;
                 }
 
                 break;
             case 10:
-                result = sine(num1);
-                cout << "Here is your answer = " << result << endl;
+                *result = sine(*num1);
+                cout << "Here is your answer = " << *result << endl;
                 break;
             case 11:
-                result = square(num1);
-                cout << "Here is your answer = " << result << endl;
+                *result = square(*num1);
+                cout << "Here is your answer = " << *result << endl;
                 break;
             case 12:
-                result = squareroot(num1);
-                cout << "Here is your answer = " << result << endl;
+                *result = squareroot(*num1);
+                cout << "Here is your answer = " << *result << endl;
                 break;
             case 13:
                 cout << "Enter second number: ";
-                cin >> num2;
-                result = subtract(num1, num2);
-                cout << "Here is your answer = " << result << endl;
+                cin >> *num2;
+                *result = subtract(*num1, *num2);
+                cout << "Here is your answer = " << *result << endl;
                 break;
             case 14:
-                result = tangent(num1);
-                cout << "Here is your answer = " << result << endl;
+                *result = tangent(*num1);
+                cout << "Here is your answer = " << *result << endl;
                 break;
             }
         }

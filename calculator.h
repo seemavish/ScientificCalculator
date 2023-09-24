@@ -9,9 +9,9 @@ using namespace std;
 class Calculator
 {
 public:
-    double num1, num2, result;
-    int index;
-    string operation, input1;
+    double* num1, *num2, *result;
+    int* index;
+    string* operation, *input1;
     vector<string> operations;
 
 public:
