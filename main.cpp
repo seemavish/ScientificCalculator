@@ -36,5 +36,7 @@ int main()
           cerr << "Exception: " << e.what() << endl;
      };
 
+     delete calculator;
+
      return 0;
 }
